@@ -1,0 +1,43 @@
+<ion-content [fullscreen]="true">
+
+  <div class="bg">
+    <img src="./../../../assets/images/loginbg.jpg" alt="">
+    <div class = 'box'>
+      <ion-card style="background-color: rgb(255 255 255 / 79%);">
+        <!-- <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> -->
+        <div>
+          <ion-card-header>
+            <ion-card-title>SignUp </ion-card-title>
+            <ion-card-subtitle>Welcome to House mate to simplyfi your life</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <form #Signform = "ngForm" validate>
+              <ion-list>
+                <ion-item>
+                  <ion-label position="floating" >Email</ion-label>
+                  <ion-input (ionInput)="emailCheck()" type="email" name = "email" [(ngModel)]="user.email" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating" >Password</ion-label>
+                  <ion-input type="password" name="password" [(ngModel)]="user.password" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating" >Retype Password</ion-label>
+                  <ion-input (ionInput)="check()" type="password" name="repassword" [(ngModel)]="user.repassword" required></ion-input>
+                </ion-item>
+              </ion-list>
+
+              <ion-button [disabled]="Signform.invalid || passWordCheck || emailValid" (click) = "onSubmit()">login</ion-button>
+            </form>
+            <p>Do you have an account ? <a [routerLink]="['/login']" routerLinkActive="router-link-active" > Login </a> here</p>
+          </ion-card-content>
+
+        </div>
+
+      </ion-card>
+
+    </div>
+  </div>
+
+</ion-content>
