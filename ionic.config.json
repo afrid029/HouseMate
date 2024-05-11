@@ -1,0 +1,7 @@
+{
+  "name": "House Mate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
