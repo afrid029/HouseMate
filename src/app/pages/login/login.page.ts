@@ -3,6 +3,9 @@ import { LoadingController } from '@ionic/angular';
 import {LoginForm} from './../../Classes/class'
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { AlertSrvcService } from 'src/app/services/alert-srvc.service';
+import {  Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -18,24 +21,49 @@ export class LoginPage  {
 
   relays : Relays | undefined;
   constructor(private auth: AuthServiceService,
-              private db: DataServiceService
+              private db: DataServiceService,
+              private alert: AlertSrvcService,
+              private route: Router
   ) { }
 
   async onSubmit(){
     console.log(this.UserDet);
-   await this.auth.Login(this.UserDet).then( async re=>{
-      console.log(re);
-      this.auth.isAuth.next(true);
-      localStorage.setItem('email',this.UserDet.email);
-      // (await this.db.getAllRelays(re.user?.uid)).forEach(res =>{
-      //   console.log(res);
+    try{
+      await this.auth.Login(this.UserDet).then( async re=>{
+        console.log(re);
+        this.auth.isAuth.next(true);
+        this.auth.updateCurrentUser(re.user);
+        await this.auth.currentUser().then( async (res) =>{
+          console.log('UID ', res?.uid);
+          localStorage.setItem('uid', res.uid);
+
+        });
 
 
 
-      // })
-    })
 
-    console.log('Hellooooooowwwww');
+
+        //localStorage.setItem('email',this.UserDet.email);
+        //localStorage.setItem('uid', uid);
+
+
+        this.route.navigate(['dashboard']);
+        // (await this.db.getAllRelays(re.user?.uid)).forEach(res =>{
+        //   console.log(res);
+
+
+
+        // })
+
+
+      })
+    }catch(error: any) {
+
+      this.alert.LoginError();
+
+    }
+
+
 
   }
 

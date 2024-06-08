@@ -19,4 +19,12 @@ export class AuthServiceService {
   async Login(user: LoginForm){
     return this.auth.signInWithEmailAndPassword(user.email, user.password);
   }
+
+  async updateCurrentUser(user: any){
+    this.auth.updateCurrentUser(user);
+  }
+
+  async currentUser(){
+    return this.auth.currentUser;
+  }
 }

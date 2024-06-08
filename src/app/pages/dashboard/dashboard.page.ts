@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPage implements OnInit {
 
-  constructor() { }
+  constructor(private data: DataServiceService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    (await this.data.getAllRelays(localStorage.getItem('uid'))).subscribe((data : any) =>{
+
+      
+
+    })
   }
 
 }
