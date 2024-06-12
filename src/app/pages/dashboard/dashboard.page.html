@@ -1,14 +1,179 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>dashboard</ion-title>
+    <ion-title>Dashboard</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
+  <ion-card color="light">
     <ion-card-header>
-
+      <ion-card-title>Socket Outlet 01</ion-card-title>
+      <ion-card-subtitle>Refegerator</ion-card-subtitle>
     </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-progress-bar class="pbar" value="{{R1UsedBar}}" buffer="1" color="warning"></ion-progress-bar>
+      <h5 style="float: right; font-weight: 900; font-size: medium;">{{R1Used}} %</h5><br><br>
+
+      <p *ngIf = "R1Used > 75" class = "warning">Usage of this month reached {{R1Used | number:'1.0-0'}} %</p>
+
+      <ion-toggle aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R1CurrentStat">Current Status</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R1ManualSw">Manual Switch Status</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning"  [checked]="relays.R1MobileSw">Mobile Switch</ion-toggle><br><br>
+      <div>
+        <div >
+          <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R1SH}} : {{R1SM}}</span><ion-button *ngIf = "!R1.startSchedule" (click)="StartScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R1.startSchedule" (click)="CloseStartScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
+        </div>
+        <div *ngIf = "R1.startSchedule">
+            <ion-item>
+              <ion-label position="floating">Hour</ion-label>
+              <ion-input (ionChange)="startHourChange(R1)" type="Number"  name = "value"  [(ngModel)] = 'R1.startHour' ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Minutes</ion-label>
+              <ion-input (ionChange) = "startMinChange(R1)" type="Number" name = "value"  [(ngModel)] = 'R1.startMinute' ></ion-input>
+            </ion-item>
+            <br>
+            <ion-button (click)="UpdateStartTime(R1)" size = "small" color="success">Update</ion-button>
+        </div>
+
+        <div >
+          <p>Schedule End Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R1EH}} : {{R1EM}}</span><ion-button *ngIf = "!R1.endSchedule" (click)="EndScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color = "danger" *ngIf = "R1.endSchedule" (click)="CloseEndScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
+        </div>
+        <div *ngIf = "R1.endSchedule">
+            <ion-item>
+              <ion-label position="floating">Hour</ion-label>
+              <ion-input (ionChange) = "endHourChange(R1)" type="Number"  name = "value"  [(ngModel)] = 'R1.endHour' ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Minutes</ion-label>
+              <ion-input (ionChange) = "endMinChange(R1)" type="Number" name = "value"  [(ngModel)] = 'R1.endMinute' ></ion-input>
+            </ion-item>
+            <br>
+            <ion-button (click) = "UpdateEndTime(R1)" size = "small" color="success">Update</ion-button>
+        </div>
+
+
+      </div>
+    </ion-card-content>
+
+
   </ion-card>
+
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-title>Socket Outlet 02</ion-card-title>
+      <ion-card-subtitle>Water Pump</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-progress-bar class="pbar" value="{{R2UsedBar}}" buffer="1" color="warning"></ion-progress-bar>
+      <h5 style="float: right; font-weight: 900; font-size: medium;">{{R2Used}} %</h5><br><br>
+
+      <p *ngIf = "R2Used > 75" class = "warning">Usage of this month reached {{R2Used | number:'1.0-0'}} %</p>
+
+      <ion-toggle aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R2CurrentStat">Current Status</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R2ManualSw">Manual Switch Status</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning"  [checked]="relays.R2MobileSw">Mobile Switch</ion-toggle><br><br>
+      <div>
+        <div >
+          <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R2SH}} : {{R2SM}}</span><ion-button *ngIf = "!R2.startSchedule" (click)="StartScheduleEdit(R2)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R2.startSchedule" (click)="CloseStartScheduleEdit(R2)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
+        </div>
+        <div *ngIf = "R2.startSchedule">
+            <ion-item>
+              <ion-label position="floating">Hour</ion-label>
+              <ion-input (ionChange)="startHourChange(R2)" type="Number"  name = "value"  [(ngModel)] = 'R2.startHour' ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Minutes</ion-label>
+              <ion-input (ionChange) = "startMinChange(R2)" type="Number" name = "value"  [(ngModel)] = 'R2.startMinute' ></ion-input>
+            </ion-item>
+            <br>
+            <ion-button (click)="UpdateStartTime(R2)" size = "small" color="success">Update</ion-button>
+        </div>
+
+        <div >
+          <p>Schedule End Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R2EH}} : {{R2EM}}</span><ion-button *ngIf = "!R2.endSchedule" (click)="EndScheduleEdit(R2)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color = "danger" *ngIf = "R2.endSchedule" (click)="CloseEndScheduleEdit(R2)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
+        </div>
+        <div *ngIf = "R2.endSchedule">
+            <ion-item>
+              <ion-label position="floating">Hour</ion-label>
+              <ion-input (ionChange) = "endHourChange(R2)" type="Number"  name = "value"  [(ngModel)] = 'R2.endHour' ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Minutes</ion-label>
+              <ion-input (ionChange) = "endMinChange(R2)" type="Number" name = "value"  [(ngModel)] = 'R2.endMinute' ></ion-input>
+            </ion-item>
+            <br>
+            <ion-button (click) = "UpdateEndTime(R2)" size = "small" color="success">Update</ion-button>
+        </div>
+
+
+      </div>
+    </ion-card-content>
+
+
+  </ion-card>
+
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-title>Socket Outlet 03</ion-card-title>
+      <ion-card-subtitle>Iron Box</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-progress-bar class="pbar" value="{{R3UsedBar}}" buffer="1" color="warning"></ion-progress-bar>
+      <h5 style="float: right; font-weight: 900; font-size: medium;">{{R3Used}} %</h5><br><br>
+
+      <p *ngIf = "R3Used > 75" class = "warning">Usage of this month reached {{R3Used | number:'1.0-0'}} %</p>
+
+      <ion-toggle aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R3CurrentStat">Current Status</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R3ManualSw">Manual Switch Status</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning"  [checked]="relays.R3MobileSw">Mobile Switch</ion-toggle><br><br>
+      <div>
+        <div >
+          <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R3SH}} : {{R3SM}}</span><ion-button *ngIf = "!R3.startSchedule" (click)="StartScheduleEdit(R3)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R3.startSchedule" (click)="CloseStartScheduleEdit(R3)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
+        </div>
+        <div *ngIf = "R3.startSchedule">
+            <ion-item>
+              <ion-label position="floating">Hour</ion-label>
+              <ion-input (ionChange)="startHourChange(R3)" type="Number"  name = "value"  [(ngModel)] = 'R3.startHour' ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Minutes</ion-label>
+              <ion-input (ionChange) = "startMinChange(R3)" type="Number" name = "value"  [(ngModel)] = 'R3.startMinute' ></ion-input>
+            </ion-item>
+            <br>
+            <ion-button (click)="UpdateStartTime(R3)" size = "small" color="success">Update</ion-button>
+        </div>
+
+        <div >
+          <p>Schedule End Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R3EH}} : {{R3EM}}</span><ion-button *ngIf = "!R3.endSchedule" (click)="EndScheduleEdit(R3)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color = "danger" *ngIf = "R3.endSchedule" (click)="CloseEndScheduleEdit(R3)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
+        </div>
+        <div *ngIf = "R3.endSchedule">
+            <ion-item>
+              <ion-label position="floating">Hour</ion-label>
+              <ion-input (ionChange) = "endHourChange(R3)" type="Number"  name = "value"  [(ngModel)] = 'R3.endHour' ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Minutes</ion-label>
+              <ion-input (ionChange) = "endMinChange(R3)" type="Number" name = "value"  [(ngModel)] = 'R3.endMinute' ></ion-input>
+            </ion-item>
+            <br>
+            <ion-button (click) = "UpdateEndTime(R3)" size = "small" color="success">Update</ion-button>
+        </div>
+
+
+      </div>
+    </ion-card-content>
+
+
+  </ion-card>
+
+  <ion-button (click)="logout()" style="display: flex; justify-content: center;">Logout</ion-button>
+
 
 </ion-content>

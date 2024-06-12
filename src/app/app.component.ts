@@ -15,7 +15,7 @@ export class AppComponent {
 
     })
 
-    if(localStorage.getItem('email') !== null){
+    if(localStorage.getItem('uid') !== null){
       this.auth.isAuth.next(true);
     }
 

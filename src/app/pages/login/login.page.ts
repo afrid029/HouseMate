@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, Platform } from '@ionic/angular';
 import {LoginForm} from './../../Classes/class'
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { AlertSrvcService } from 'src/app/services/alert-srvc.service';
 import {  Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { App } from '@capacitor/app';
 
 
 @Component({
@@ -19,12 +21,54 @@ export class LoginPage  {
   UserDet = new LoginForm;
   emailValid: boolean = true;
 
+  subs: Subscription = new Subscription;
+
   relays : Relays | undefined;
   constructor(private auth: AuthServiceService,
               private db: DataServiceService,
               private alert: AlertSrvcService,
-              private route: Router
+              private route: Router,
+              private alertCtrl: AlertController,
+              private platform: Platform
+
   ) { }
+
+  ionViewDidEnter(){
+    this.subs = this.platform.backButton.subscribeWithPriority(1,()=>{
+      console.log('Dashboard ',this.constructor.name);
+
+        this.toExit();
+
+    })
+  }
+
+  ionViewWillLeave(){
+    console.log('view leaving');
+
+    this.subs.unsubscribe();
+   }
+
+  async toExit(){
+    console.log('Can exit noew');
+    const alert = await this.alertCtrl.create({
+      header: 'Exit ?',
+      buttons:[
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () =>{
+            console.log('cancelld');
+            }
+        },{
+          text: 'Exit',
+          role: 'confirm',
+          handler: () =>{
+            App.exitApp();
+          }
+        }]
+    });
+    await alert.present();
+  }
 
   async onSubmit(){
     console.log(this.UserDet);

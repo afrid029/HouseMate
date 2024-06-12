@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren:() => import('./pages/login/login.module').then(m => m.LoginPageModule),
-   // canActivate: [authGuard],
+    canActivate: [authGuard],
     pathMatch: 'full'
   },
   {
@@ -18,11 +18,11 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule),
-    //canActivate: [signGuard]
+    canActivate: [signGuard]
   },
   {
     path: 'dashboard',
-    //canActivate : [OtherGuard],
+    canActivate : [OtherGuard],
     loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   {

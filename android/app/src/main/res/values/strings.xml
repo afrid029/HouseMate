@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PowerWise</string>
+    <string name="title_activity_main">PowerWise</string>
+    <string name="package_name">com.mafd.powerwise</string>
+    <string name="custom_url_scheme">com.mafd.powerwise</string>
+</resources>

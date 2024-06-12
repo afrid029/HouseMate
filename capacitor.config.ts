@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'House Mate',
+  appId: 'com.mafd.powerwise',
+  appName: 'PowerWise',
   webDir: 'www'
 };
 

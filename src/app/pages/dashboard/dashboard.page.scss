@@ -1,0 +1,28 @@
+.setTime {
+  display: flex;
+  align-items: center;
+}
+
+.pbar {
+  --background: rgba(208, 230, 13, 0.521);
+  color:aqua;
+  height: 25px;
+  margin-bottom: 1vh;
+  border-radius: 25px;
+}
+
+.warning {
+  justify-content: center;
+  display: flex;
+  margin-bottom: 2vh;
+  color : red;
+  font-weight: 900;
+  font-size: 18px;
+  animation: blinker 2s infinite;
+}
+
+@keyframes blinker {
+  50% {
+      opacity: 0;
+  }
+}

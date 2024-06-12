@@ -18,6 +18,8 @@ export class DataServiceService {
       R1StartMin:0,
       R1EndHour:0,
       R1EndMin:0,
+      R1TotalWatts:0,
+      R1UsedWatts:0,
 
       R2ManualSw: false,
       R2MobileSw:false,
@@ -26,6 +28,8 @@ export class DataServiceService {
       R2StartMin:0,
       R2EndHour:0,
       R2EndMin:0,
+      R2TotalWatts:0,
+      R2UsedWatts:0,
 
       R3ManualSw: false,
       R3MobileSw:false,
@@ -34,6 +38,8 @@ export class DataServiceService {
       R3StartMin:0,
       R3EndHour:0,
       R3EndMin:0,
+      R3TotalWatts:0,
+      R3UsedWatts:0
 
     })
 
@@ -41,6 +47,10 @@ export class DataServiceService {
 
   async getAllRelays(uid: any){
     return this.db.object('data/'+uid).valueChanges();
+  }
+
+   UpdateTime(uid : any, data : any){
+    return this.db.object('data/'+uid).update(data);
   }
 
 

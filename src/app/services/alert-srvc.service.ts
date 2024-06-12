@@ -17,4 +17,22 @@ export class AlertSrvcService {
     });
     toast.present();
   }
+
+  async Error(){
+    const toast = await this.altctrl.create({
+     message: 'Error in update',
+     duration: 2000,
+     color: 'danger'
+   });
+   toast.present();
+ }
+
+ async success(){
+  const toast = await this.altctrl.create({
+   message: 'Updated Successfully',
+   duration: 2000,
+   color: 'success'
+ });
+ toast.present();
+}
 }
