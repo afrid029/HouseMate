@@ -20,6 +20,7 @@ export class DataServiceService {
       R1EndMin:0,
       R1TotalWatts:0,
       R1UsedWatts:0,
+      R1PermSwitch: true,
 
       R2ManualSw: false,
       R2MobileSw:false,
@@ -30,6 +31,7 @@ export class DataServiceService {
       R2EndMin:0,
       R2TotalWatts:0,
       R2UsedWatts:0,
+      R2PermSwitch: true,
 
       R3ManualSw: false,
       R3MobileSw:false,
@@ -39,7 +41,8 @@ export class DataServiceService {
       R3EndHour:0,
       R3EndMin:0,
       R3TotalWatts:0,
-      R3UsedWatts:0
+      R3UsedWatts:0,
+      R3PermSwitch: true
 
     })
 

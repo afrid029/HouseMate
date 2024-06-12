@@ -26,3 +26,28 @@
       opacity: 0;
   }
 }
+
+.permenent{
+  display:flex;
+  justify-content: center;
+  font-size: larger;
+  margin-top: 2vh;
+  margin-bottom: 1vh;
+}
+
+ion-card{
+  padding-bottom: 1.5vh;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+/* From https://css.glass */
+background: rgba(61, 151, 94, 0.09);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.3px);
+-webkit-backdrop-filter: blur(10.3px);
+border: 1px solid rgba(61, 151, 94, 0.72);
+}
+
+ion-toggle, p {
+  font-weight: 750;
+}

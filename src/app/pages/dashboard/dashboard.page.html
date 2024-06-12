@@ -5,22 +5,28 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <ion-card color="light">
+
+    <div class="permenent">
+      <ion-toggle [enableOnOffLabels]="true" aria-label="Secondary toggle" color="success" (ionChange)="x($event,R1)" [checked]="!relays.R1PermSwitch">Switch </ion-toggle>
+    </div>
+
     <ion-card-header>
       <ion-card-title>Socket Outlet 01</ion-card-title>
-      <ion-card-subtitle>Refegerator</ion-card-subtitle>
+      <ion-card-subtitle>Refrigerator</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content *ngIf = "!relays.R1PermSwitch">
 
       <ion-progress-bar class="pbar" value="{{R1UsedBar}}" buffer="1" color="warning"></ion-progress-bar>
-      <h5 style="float: right; font-weight: 900; font-size: medium;">{{R1Used}} %</h5><br><br>
+      <h5 style="float: right; font-weight: 900; font-size: medium;">{{R1Used ? R1Used : 0}} %</h5><br><br>
 
       <p *ngIf = "R1Used > 75" class = "warning">Usage of this month reached {{R1Used | number:'1.0-0'}} %</p>
 
-      <ion-toggle aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R1CurrentStat">Current Status</ion-toggle><br><br>
-      <ion-toggle aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R1ManualSw">Manual Switch Status</ion-toggle><br><br>
-      <ion-toggle aria-label="Secondary toggle" color="warning"  [checked]="relays.R1MobileSw">Mobile Switch</ion-toggle><br><br>
+      <ion-toggle  aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R1CurrentStat">Current Status</ion-toggle><br><br>
+      <ion-toggle justify="space-between" aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R1ManualSw">Manual Switch Status</ion-toggle><br><br>
+      <ion-toggle justify="space-between" aria-label="Secondary toggle" color="warning"  [checked]="relays.R1MobileSw">Mobile Switch</ion-toggle><br><br>
       <div>
         <div >
           <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R1SH}} : {{R1SM}}</span><ion-button *ngIf = "!R1.startSchedule" (click)="StartScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R1.startSchedule" (click)="CloseStartScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
@@ -62,15 +68,20 @@
   </ion-card>
 
   <ion-card color="light">
+
+    <div class="permenent">
+      <ion-toggle [enableOnOffLabels]="true" aria-label="Secondary toggle" color="success" (ionChange)="x($event,R2)" [checked]="!relays.R2PermSwitch">Switch </ion-toggle>
+    </div>
+
     <ion-card-header>
       <ion-card-title>Socket Outlet 02</ion-card-title>
       <ion-card-subtitle>Water Pump</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content *ngIf = "!relays.R2PermSwitch">
 
       <ion-progress-bar class="pbar" value="{{R2UsedBar}}" buffer="1" color="warning"></ion-progress-bar>
-      <h5 style="float: right; font-weight: 900; font-size: medium;">{{R2Used}} %</h5><br><br>
+      <h5 style="float: right; font-weight: 900; font-size: medium;">{{R2Used ? R2Used : 0}} %</h5><br><br>
 
       <p *ngIf = "R2Used > 75" class = "warning">Usage of this month reached {{R2Used | number:'1.0-0'}} %</p>
 
@@ -118,15 +129,20 @@
   </ion-card>
 
   <ion-card color="light">
+
+    <div class="permenent">
+      <ion-toggle [enableOnOffLabels]="true" aria-label="Secondary toggle" color="success" (ionChange)="x($event,R3)" [checked]="!relays.R3PermSwitch">Switch </ion-toggle>
+    </div>
+
     <ion-card-header>
       <ion-card-title>Socket Outlet 03</ion-card-title>
       <ion-card-subtitle>Iron Box</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content *ngIf = "!relays.R3PermSwitch">
 
       <ion-progress-bar class="pbar" value="{{R3UsedBar}}" buffer="1" color="warning"></ion-progress-bar>
-      <h5 style="float: right; font-weight: 900; font-size: medium;">{{R3Used}} %</h5><br><br>
+      <h5 style="float: right; font-weight: 900; font-size: medium;">{{R3Used ? R3Used : 0}} %</h5><br><br>
 
       <p *ngIf = "R3Used > 75" class = "warning">Usage of this month reached {{R3Used | number:'1.0-0'}} %</p>
 

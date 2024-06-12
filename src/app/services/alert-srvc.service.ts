@@ -13,7 +13,8 @@ export class AlertSrvcService {
      const toast = await this.altctrl.create({
       message: 'Email/Password is wrong',
       duration: 2000,
-      color: 'danger'
+      color: 'danger',
+       position: 'top'
     });
     toast.present();
   }
@@ -22,7 +23,8 @@ export class AlertSrvcService {
     const toast = await this.altctrl.create({
      message: 'Error in update',
      duration: 2000,
-     color: 'danger'
+     color: 'danger',
+      position: 'top'
    });
    toast.present();
  }
@@ -31,7 +33,8 @@ export class AlertSrvcService {
   const toast = await this.altctrl.create({
    message: 'Updated Successfully',
    duration: 2000,
-   color: 'success'
+   color: 'success',
+   position: 'top'
  });
  toast.present();
 }
