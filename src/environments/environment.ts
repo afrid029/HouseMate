@@ -6,12 +6,21 @@ export const environment = {
   production: true,
   firebaseConfig : {
     apiKey: "AIzaSyBNz50Grwr5wfXQhtTdTuTLJT8xA3BR2dY",
-    authDomain: "training-a9db8.firebaseapp.com",
-    projectId: "training-a9db8",
-    storageBucket: "training-a9db8.appspot.com",
-    messagingSenderId: "910993526829",
-    appId: "1:910993526829:web:eb6f673ba96b93616468a4",
-    measurementId: "G-ZC58EDJDVS"
+  authDomain: "training-a9db8.firebaseapp.com",
+  databaseURL: "https://training-a9db8-default-rtdb.firebaseio.com",
+  projectId: "training-a9db8",
+  storageBucket: "training-a9db8.appspot.com",
+  messagingSenderId: "910993526829",
+  appId: "1:910993526829:web:eb6f673ba96b93616468a4",
+  measurementId: "G-ZC58EDJDVS"
+    // apiKey: "AIzaSyC-dl8NEnQYadU0cHSktLhkKDybvHPogWc",
+    // authDomain: "test6-71922.firebaseapp.com",
+    // databaseURL: "https://test6-71922-default-rtdb.asia-southeast1.firebasedatabase.app",
+    // projectId: "test6-71922",
+    // storageBucket: "test6-71922.appspot.com",
+    // messagingSenderId: "207919208116",
+    // appId: "1:207919208116:web:7bce47961149c3630ce9e1",
+    // measurementId: "G-7LEFR477CB"
 }
 };
 

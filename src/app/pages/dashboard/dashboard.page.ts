@@ -28,7 +28,8 @@ relays: any = {
   R1EndMin:Number,
   R1TotalWatts:Number,
   R1UsedWatts:Number,
-  R1PermSwitch: Boolean,
+  R1PermSwitch: String,
+
 
   R2ManualSw: Boolean,
   R2MobileSw:Boolean,
@@ -39,7 +40,8 @@ relays: any = {
   R2EndMin:Number,
   R2TotalWatts:Number,
   R2UsedWatts:Number,
-  R2PermSwitch: Boolean,
+  R2PermSwitch: String,
+
 
   R3ManualSw: Boolean,
   R3MobileSw:Boolean,
@@ -50,7 +52,7 @@ relays: any = {
   R3EndMin:Number,
   R3TotalWatts:Number,
   R3UsedWatts:Number,
-  R3PermSwitch: Boolean
+  R3PermSwitch: String
 }
 
 R1: any = {startSchedule: false, endSchedule: false, startHour: 0, startMinute: 0, endHour: 0, endMinute: 0}
@@ -112,7 +114,7 @@ subs: Subscription = new Subscription;
           text: 'Cancel',
           role: 'cancel',
           handler: () =>{
-            console.log('cancelld');
+            console.log('cancelled');
             }
         },{
           text: 'Exit',
@@ -139,6 +141,9 @@ subs: Subscription = new Subscription;
       this.R3UsedBar = this.R3Used / 100;
 
       console.log((this.relays.R1UsedWatts));
+      console.log(this.R1Used);
+      console.log(this.R1UsedBar);
+
 
 
       this.R1SH = this.toString(this.relays.R1StartHour)
@@ -330,21 +335,32 @@ subs: Subscription = new Subscription;
 
     await alert.present();
   }
+
   x(sw: any, rel: any){
 
     console.log(sw.detail.checked);
 
 
     if(rel === this.R1){
-      this.data.UpdateTime(localStorage.getItem('uid'), {R1PermSwitch : !sw.detail.checked, R1CurrentStat: false, R1MobileSw: false})
+      this.data.UpdateTime(localStorage.getItem('uid'), {R1PermSwitch : sw.detail.checked == true ? "B" : "A", R1CurrentStat: false, R1MobileSw: false})
     }else if(rel === this.R2){
-      this.data.UpdateTime(localStorage.getItem('uid'), {R2PermSwitch : !sw.detail.checked, R2CurrentStat: false, R2MobileSw: false})
+      this.data.UpdateTime(localStorage.getItem('uid'), {R2PermSwitch : sw.detail.checked == true ? "B" : "A", R2CurrentStat: false, R2MobileSw: false})
     }else if(rel === this.R3){
-      this.data.UpdateTime(localStorage.getItem('uid'), {R3PermSwitch : !sw.detail.checked, R3CurrentStat: false, R3MobileSw: false})
+      this.data.UpdateTime(localStorage.getItem('uid'), {R3PermSwitch : sw.detail.checked == true ? "B" : "A", R3CurrentStat: false, R3MobileSw: false})
     }
+  }
+  MobileSw(sw: any, rel: any){
+
+    console.log(sw.detail.checked);
 
 
-
+    if(rel === this.R1){
+      this.data.MobileSwitchUpdate(localStorage.getItem('uid'), { R1CurrentStat: sw.detail.checked, R1MobileSw: sw.detail.checked})
+    }else if(rel === this.R2){
+      this.data.MobileSwitchUpdate(localStorage.getItem('uid'), { R2CurrentStat: sw.detail.checked, R2MobileSw: sw.detail.checked})
+    }else if(rel === this.R3){
+      this.data.MobileSwitchUpdate(localStorage.getItem('uid'), { R3CurrentStat: sw.detail.checked, R3MobileSw: sw.detail.checked})
+    }
   }
 
 }

@@ -9,7 +9,7 @@
   <ion-card color="light">
 
     <div class="permenent">
-      <ion-toggle [enableOnOffLabels]="true" aria-label="Secondary toggle" color="success" (ionChange)="x($event,R1)" [checked]="!relays.R1PermSwitch">Switch </ion-toggle>
+      <ion-toggle [enableOnOffLabels]="true" aria-label="Secondary toggle" color="success" (ionChange)="x($event,R1)" [checked]="relays.R1PermSwitch === 'A' ? false : true">Switch </ion-toggle>
     </div>
 
     <ion-card-header>
@@ -17,7 +17,7 @@
       <ion-card-subtitle>Refrigerator</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content *ngIf = "!relays.R1PermSwitch">
+    <ion-card-content *ngIf = "relays.R1PermSwitch === 'A' ? false : true">
 
       <ion-progress-bar class="pbar" value="{{R1UsedBar}}" buffer="1" color="warning"></ion-progress-bar>
       <h5 style="float: right; font-weight: 900; font-size: medium;">{{R1Used ? R1Used : 0}} %</h5><br><br>
@@ -26,7 +26,7 @@
 
       <ion-toggle  aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R1CurrentStat">Current Status</ion-toggle><br><br>
       <ion-toggle justify="space-between" aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R1ManualSw">Manual Switch Status</ion-toggle><br><br>
-      <ion-toggle justify="space-between" aria-label="Secondary toggle" color="warning"  [checked]="relays.R1MobileSw">Mobile Switch</ion-toggle><br><br>
+      <ion-toggle justify="space-between" aria-label="Secondary toggle" color="warning" (ionChange)="MobileSw($event, R1)"  [checked]="relays.R1MobileSw">Mobile Switch</ion-toggle><br><br>
       <div>
         <div >
           <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R1SH}} : {{R1SM}}</span><ion-button *ngIf = "!R1.startSchedule" (click)="StartScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R1.startSchedule" (click)="CloseStartScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
@@ -70,7 +70,7 @@
   <ion-card color="light">
 
     <div class="permenent">
-      <ion-toggle [enableOnOffLabels]="true" aria-label="Secondary toggle" color="success" (ionChange)="x($event,R2)" [checked]="!relays.R2PermSwitch">Switch </ion-toggle>
+      <ion-toggle [enableOnOffLabels]="true" aria-label="Secondary toggle" color="success" (ionChange)="x($event,R2)" [checked]="relays.R2PermSwitch === 'A' ? false : true">Switch </ion-toggle>
     </div>
 
     <ion-card-header>
@@ -78,7 +78,7 @@
       <ion-card-subtitle>Water Pump</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content *ngIf = "!relays.R2PermSwitch">
+    <ion-card-content *ngIf = "relays.R2PermSwitch === 'A' ? false : true">
 
       <ion-progress-bar class="pbar" value="{{R2UsedBar}}" buffer="1" color="warning"></ion-progress-bar>
       <h5 style="float: right; font-weight: 900; font-size: medium;">{{R2Used ? R2Used : 0}} %</h5><br><br>
@@ -87,7 +87,7 @@
 
       <ion-toggle aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R2CurrentStat">Current Status</ion-toggle><br><br>
       <ion-toggle aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R2ManualSw">Manual Switch Status</ion-toggle><br><br>
-      <ion-toggle aria-label="Secondary toggle" color="warning"  [checked]="relays.R2MobileSw">Mobile Switch</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning" (ionChange)="MobileSw($event, R2)"  [checked]="relays.R2MobileSw">Mobile Switch</ion-toggle><br><br>
       <div>
         <div >
           <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R2SH}} : {{R2SM}}</span><ion-button *ngIf = "!R2.startSchedule" (click)="StartScheduleEdit(R2)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R2.startSchedule" (click)="CloseStartScheduleEdit(R2)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
@@ -131,7 +131,7 @@
   <ion-card color="light">
 
     <div class="permenent">
-      <ion-toggle [enableOnOffLabels]="true" aria-label="Secondary toggle" color="success" (ionChange)="x($event,R3)" [checked]="!relays.R3PermSwitch">Switch </ion-toggle>
+      <ion-toggle [enableOnOffLabels]="true" aria-label="Secondary toggle" color="success" (ionChange)="x($event,R3)" [checked]="relays.R3PermSwitch === 'A' ? false : true">Switch </ion-toggle>
     </div>
 
     <ion-card-header>
@@ -139,7 +139,7 @@
       <ion-card-subtitle>Iron Box</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-card-content *ngIf = "!relays.R3PermSwitch">
+    <ion-card-content *ngIf = "relays.R3PermSwitch === 'A' ? false : true">
 
       <ion-progress-bar class="pbar" value="{{R3UsedBar}}" buffer="1" color="warning"></ion-progress-bar>
       <h5 style="float: right; font-weight: 900; font-size: medium;">{{R3Used ? R3Used : 0}} %</h5><br><br>
@@ -148,7 +148,7 @@
 
       <ion-toggle aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R3CurrentStat">Current Status</ion-toggle><br><br>
       <ion-toggle aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R3ManualSw">Manual Switch Status</ion-toggle><br><br>
-      <ion-toggle aria-label="Secondary toggle" color="warning"  [checked]="relays.R3MobileSw">Mobile Switch</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning" (ionChange)="MobileSw($event, R3)"  [checked]="relays.R3MobileSw">Mobile Switch</ion-toggle><br><br>
       <div>
         <div >
           <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R3SH}} : {{R3SM}}</span><ion-button *ngIf = "!R3.startSchedule" (click)="StartScheduleEdit(R3)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R3.startSchedule" (click)="CloseStartScheduleEdit(R3)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
