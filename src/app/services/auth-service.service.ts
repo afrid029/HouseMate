@@ -16,7 +16,7 @@ export class AuthServiceService {
     return this.auth.createUserWithEmailAndPassword(user.email, user.password)
   }
 
-  async Login(user: LoginForm){
+  Login(user: LoginForm){
     return this.auth.signInWithEmailAndPassword(user.email, user.password);
   }
 

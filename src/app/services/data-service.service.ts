@@ -12,7 +12,7 @@ export class DataServiceService {
     console.log(uid);
     return this.db.object('data/'+uid).set({
       R1ManualSw: false,
-      R1MobileSw:false,
+      R1MobileSw:"B",
       R1CurrentStat:false,
       R1StartHour:0,
       R1StartMin:0,
@@ -25,7 +25,7 @@ export class DataServiceService {
       R1WholeWatts: 120,
 
       R2ManualSw: false,
-      R2MobileSw:false,
+      R2MobileSw:"B",
       R2CurrentStat:false,
       R2StartHour:0,
       R2StartMin:0,
@@ -38,7 +38,7 @@ export class DataServiceService {
       R2WholeWatts: 4,
 
       R3ManualSw: false,
-      R3MobileSw:false,
+      R3MobileSw:"B",
       R3CurrentStat:false,
       R3StartHour:0,
       R3StartMin:0,

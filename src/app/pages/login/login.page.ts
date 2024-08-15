@@ -70,16 +70,16 @@ export class LoginPage  {
     await alert.present();
   }
 
-  async onSubmit(){
+   onSubmit(){
     console.log(this.UserDet);
-    try{
-      await this.auth.Login(this.UserDet).then( async re=>{
+
+       this.auth.Login(this.UserDet).then( async re=>{
         console.log(re);
         this.auth.isAuth.next(true);
         this.auth.updateCurrentUser(re.user);
         await this.auth.currentUser().then( async (res) =>{
           console.log('UID ', res?.uid);
-          localStorage.setItem('uid', res.uid);
+          localStorage.setItem('uid', res?.uid ? res.uid : 'null');
 
         });
 
@@ -100,12 +100,12 @@ export class LoginPage  {
         // })
 
 
+      }).catch((e: any) =>{
+        console.log(e.code);
+
+        this.alert.LoginError();
+
       })
-    }catch(error: any) {
-
-      this.alert.LoginError();
-
-    }
 
 
 

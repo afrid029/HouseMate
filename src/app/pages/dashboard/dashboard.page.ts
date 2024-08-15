@@ -342,11 +342,11 @@ subs: Subscription = new Subscription;
 
 
     if(rel === this.R1){
-      this.data.UpdateTime(localStorage.getItem('uid'), {R1PermSwitch : sw.detail.checked == true ? "B" : "A", R1CurrentStat: false, R1MobileSw: false})
+      this.data.UpdateTime(localStorage.getItem('uid'), {R1PermSwitch : sw.detail.checked == true ? "B" : "A", R1CurrentStat: false, R1MobileSw: "B"})
     }else if(rel === this.R2){
-      this.data.UpdateTime(localStorage.getItem('uid'), {R2PermSwitch : sw.detail.checked == true ? "B" : "A", R2CurrentStat: false, R2MobileSw: false})
+      this.data.UpdateTime(localStorage.getItem('uid'), {R2PermSwitch : sw.detail.checked == true ? "B" : "A", R2CurrentStat: false, R2MobileSw: "B"})
     }else if(rel === this.R3){
-      this.data.UpdateTime(localStorage.getItem('uid'), {R3PermSwitch : sw.detail.checked == true ? "B" : "A", R3CurrentStat: false, R3MobileSw: false})
+      this.data.UpdateTime(localStorage.getItem('uid'), {R3PermSwitch : sw.detail.checked == true ? "B" : "A", R3CurrentStat: false, R3MobileSw: "B"})
     }
   }
   MobileSw(sw: any, rel: any){
@@ -355,11 +355,11 @@ subs: Subscription = new Subscription;
 
 
     if(rel === this.R1){
-      this.data.MobileSwitchUpdate(localStorage.getItem('uid'), { R1CurrentStat: sw.detail.checked, R1MobileSw: sw.detail.checked})
+      this.data.MobileSwitchUpdate(localStorage.getItem('uid'), { R1CurrentStat: sw.detail.checked, R1MobileSw: sw.detail.checked == true ? "A" : "B"})
     }else if(rel === this.R2){
-      this.data.MobileSwitchUpdate(localStorage.getItem('uid'), { R2CurrentStat: sw.detail.checked, R2MobileSw: sw.detail.checked})
+      this.data.MobileSwitchUpdate(localStorage.getItem('uid'), { R2CurrentStat: sw.detail.checked, R2MobileSw: sw.detail.checked == true ? "A" : "B"})
     }else if(rel === this.R3){
-      this.data.MobileSwitchUpdate(localStorage.getItem('uid'), { R3CurrentStat: sw.detail.checked, R3MobileSw: sw.detail.checked})
+      this.data.MobileSwitchUpdate(localStorage.getItem('uid'), { R3CurrentStat: sw.detail.checked, R3MobileSw: sw.detail.checked == true ? "A" : "B"})
     }
   }
 

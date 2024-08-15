@@ -26,7 +26,7 @@
 
       <ion-toggle  aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R1CurrentStat">Current Status</ion-toggle><br><br>
       <ion-toggle justify="space-between" aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R1ManualSw">Manual Switch Status</ion-toggle><br><br>
-      <ion-toggle justify="space-between" aria-label="Secondary toggle" color="warning" (ionChange)="MobileSw($event, R1)"  [checked]="relays.R1MobileSw">Mobile Switch</ion-toggle><br><br>
+      <ion-toggle justify="space-between" aria-label="Secondary toggle" color="warning" (ionChange)="MobileSw($event, R1)"  [checked]="relays.R1MobileSw === 'A'? true : false">Mobile Switch</ion-toggle><br><br>
       <div>
         <div >
           <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R1SH}} : {{R1SM}}</span><ion-button *ngIf = "!R1.startSchedule" (click)="StartScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R1.startSchedule" (click)="CloseStartScheduleEdit(R1)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
@@ -87,7 +87,7 @@
 
       <ion-toggle aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R2CurrentStat">Current Status</ion-toggle><br><br>
       <ion-toggle aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R2ManualSw">Manual Switch Status</ion-toggle><br><br>
-      <ion-toggle aria-label="Secondary toggle" color="warning" (ionChange)="MobileSw($event, R2)"  [checked]="relays.R2MobileSw">Mobile Switch</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning" (ionChange)="MobileSw($event, R2)"  [checked]="relays.R2MobileSw === 'A'? true : false">Mobile Switch</ion-toggle><br><br>
       <div>
         <div >
           <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R2SH}} : {{R2SM}}</span><ion-button *ngIf = "!R2.startSchedule" (click)="StartScheduleEdit(R2)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R2.startSchedule" (click)="CloseStartScheduleEdit(R2)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
@@ -148,7 +148,7 @@
 
       <ion-toggle aria-label="Secondary toggle" color="secondary" [disabled] = "true" [checked]="relays.R3CurrentStat">Current Status</ion-toggle><br><br>
       <ion-toggle aria-label="Secondary toggle" color="warning" [disabled] = "true" [checked]="relays.R3ManualSw">Manual Switch Status</ion-toggle><br><br>
-      <ion-toggle aria-label="Secondary toggle" color="warning" (ionChange)="MobileSw($event, R3)"  [checked]="relays.R3MobileSw">Mobile Switch</ion-toggle><br><br>
+      <ion-toggle aria-label="Secondary toggle" color="warning" (ionChange)="MobileSw($event, R3)"  [checked]="relays.R3MobileSw === 'A'? true : false">Mobile Switch</ion-toggle><br><br>
       <div>
         <div >
           <p>Schedule Start Time  <span style="font-size: 25Px; font-weight: 800; margin-left: 4vw;">{{R3SH}} : {{R3SM}}</span><ion-button *ngIf = "!R3.startSchedule" (click)="StartScheduleEdit(R3)" style="float: right; margin-top: 2px;" size="small">Edit</ion-button><ion-button color="danger" *ngIf = "R3.startSchedule" (click)="CloseStartScheduleEdit(R3)" style="float: right; margin-top: 2px;" size="small">Close</ion-button></p>
